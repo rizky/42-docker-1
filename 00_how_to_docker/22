@@ -1,0 +1,4 @@
+docker swarm join --token SWMTKN-1-2q1i3rbqljtyaxs1cxlu24voilr1flu273ofc2x6ggn9ywrrxy-8mb2m52szdwwy4dnvvsbojr6h 192.168.99.101:2377
+
+# eval $(docker-machine env Char)
+# docker node ls

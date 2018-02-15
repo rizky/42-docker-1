@@ -1,0 +1,1 @@
+docker service logs 42school/engineering-bay

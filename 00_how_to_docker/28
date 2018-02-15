@@ -1,0 +1,5 @@
+docker service create \
+    --name marines \
+    --replicas 2 \
+    --network overmind \
+    42school/marine-squad
