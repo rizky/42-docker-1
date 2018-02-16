@@ -1,32 +1,33 @@
-FROM debian:jessie AS build
+FROM debian:jessie
 
-# install wget
-RUN apt-get update \
-  && apt-get install -y wget bzip2 \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+ENV TS_DIRECTORY=/opt/teamspeak
 
-# setup teamspeak environment variables
-ENV TS3_VERSION 3.0.13.4
-ENV TS3_URL http://dl.4players.de/ts/releases/$TS3_VERSION/teamspeak3-server_linux_amd64-$TS3_VERSION.tar.bz2
-ENV TS3_DIR /ts3server
+RUN apt-get update && apt-get install -y bzip2 w3m wget && rm -rf /var/lib/apt/lists/*
 
-# download and untar teamspeak
-WORKDIR /ts3server
-RUN wget $TS3_URL -O - | tar -xj --strip-components=1
+RUN TS_SERVER_VER="$(w3m -dump https://www.teamspeak.com/downloads | grep -m 1 'Server 64-bit ' | awk '{print $NF}')" &&\
+  wget http://dl.4players.de/ts/releases/${TS_SERVER_VER}/teamspeak3-server_linux_amd64-${TS_SERVER_VER}.tar.bz2 -O /tmp/teamspeak.tar.bz2 &&\
+  tar jxf /tmp/teamspeak.tar.bz2 -C /opt &&\
+  mv /opt/teamspeak3-server_* ${TS_DIRECTORY} &&\
+  rm /tmp/teamspeak.tar.bz2 &&\
+  apt-get purge -y bzip2 w3m wget &&\
+  apt-get autoremove -y &&\
+  rm -rf /var/lib/apt/lists/*
 
-# symlink persistent data to volumes
-VOLUME ["/files", "/init"]
-COPY ./init /init
-RUN ln -s /files $TS3_DIR/files \
- && ln -s /init/ts3server.sqlitedb $TS3_DIR/ts3server.sqlitedb
+RUN groupadd -g 503 teamspeak &&\
+  useradd -u 503 -g 503 -d ${TS_DIRECTORY} teamspeak &&\
+  mkdir /data &&\
+  chown -R teamspeak:teamspeak ${TS_DIRECTORY} /data
 
-# start teamspeak server
-CMD ./ts3server_minimal_runscript.sh \
-  logpath=/files/logs/ \
-  licensepath=/init/ \
-  query_ip_whitelist=/init/query_ip_whitelist.txt \
-  query_ip_blacklist=/init/query_ip_blacklist.txt
+# add tini (https://github.com/krallin/tini)
+ENV TINI_VERSION v0.13.1
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
+COPY entrypoint.sh /entrypoint.sh
+
+USER teamspeak
+EXPOSE 9987/udp 10011 30033
+ENTRYPOINT ["/entrypoint.sh"]
 
 #docker build -t rizkyario/42-docker-1-ex01 .
 #docker run -it --rm rizkyario/42-docker-1-ex01
