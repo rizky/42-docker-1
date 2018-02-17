@@ -11,3 +11,11 @@ https://github.com/amki/docker-teamspeak-client
 
 /Users/rnugroho/Documents/Codes/42/docker-1/workspace/01_dockerfiles/ex03
 https://gitlab.com/gitlab-org/omnibus-gitlab/issues/3133
+
+
+docker run -it \
+    --rm \
+    --hostname gitlab.example.com \
+    --publish 443:443 --publish 80:80 \
+    --name gitlab \
+    gitlab/gitlab-ce:latest

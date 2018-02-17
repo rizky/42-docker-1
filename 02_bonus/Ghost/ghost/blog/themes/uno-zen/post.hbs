@@ -1,0 +1,60 @@
+{{!< default}}
+
+{{#post}}
+
+  <article class="{{post_class}}">
+    <header>
+      <div class="post meta">
+        <time datetime="{{date format="YYYY-MM-DDTHH:MM"}}">{{date format="DD MMM YYYY"}}</time>
+        <span class="post tags">{{tags prefix="in " separator=" "}}</span>
+
+        {{!> post-author}}
+
+        <span class="post reading-time"> ~ <span></span> read.</span>
+      </div>
+      <a title="Tweet '{{title}}'" href="https://twitter.com/intent/tweet?text={{encode title}}{{encode ' »'}}&amp;hashtags={{tags separator="," autolink="false"}}&amp;url={{url absolute="true"}}">
+        {{#if image}}<img id="post-image" src="{{image}}" alt="{{title}}">{{/if}}
+        <h1 class="icon-reverse icon-social-twitter-post" id="post-title">{{title}}</h1>
+      </a>
+    </header>
+
+    <div id="post-content" class="{{post_class}}">
+      {{content}}
+    </div>
+
+    <div class="post related">
+      {{#prev_post}}
+        <a rel="prev" id="prev-btn" class="btn small square" href="{{url}}">← {{title}}</a>
+      {{/prev_post}}
+
+      {{#next_post}}
+        <a rel="next" id="next-btn" class="btn small square" href="{{url}}">{{title}} →</a>
+      {{/next_post}}
+    </div>
+
+    {{> comments}}
+
+  </article>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//riz-ky.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+{{/post}}

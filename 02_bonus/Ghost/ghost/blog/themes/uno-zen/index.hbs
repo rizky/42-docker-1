@@ -1,0 +1,29 @@
+{{!< default}}
+{{#get "posts" filter="tags:[dreams, thoughts, codes]" include="tags"}}
+<h1 style="text-align: center;" id="posts-headline">Blog</h1>
+<ol id="posts-list">
+  {{#foreach posts}}
+  <li>
+    <a href="{{url}}" title="Read more about '{{title}}'">{{title}}</a>
+    <time datetime="{{date format="DD MMM YYYY"}}">{{date format="DD MMM YYYY"}}</time>
+    <span class="post tags">{{tags separator=" "}}</span>
+  </li>
+  {{/foreach}}
+{{!--<a rel="prev" class="posts older btn small" href="/tag/#blog/">More...</a>--}}
+{{pagination}}
+</ol>
+{{/get}}
+
+{{#get "posts" filter="tags:[music]" limit="6" include="tags"}}
+<h1 style="text-align: center;" id="posts-headline-2">Music</h1>
+<ol id="posts-list">
+  {{#foreach posts}}
+  <li>
+    <a href="{{url}}" title="Read more about '{{title}}'">{{title}}</a>
+    <time datetime="{{date format="DD MMM YYYY"}}">{{date format="DD MMM YYYY"}}</time>
+    <span class="post tags">{{tags separator=" "}}</span>
+  </li>
+  {{/foreach}}
+<a rel="prev" class="posts older btn small" href="/tag/music/page/2/">More</a>
+</ol>
+{{/get}}

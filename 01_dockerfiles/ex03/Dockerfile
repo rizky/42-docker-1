@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-MAINTAINER GitLab Inc. <support@gitlab.com>
 
 SHELL ["/bin/sh", "-c"],
 
@@ -23,6 +22,11 @@ RUN ln -fs /dev/null /run/motd.dynamic
 # Copy assets
 COPY RELEASE /
 COPY assets/ /assets/
+
+COPY patch/gitlab.rb.template /opt/gitlab/etc/gitlab.rb.template
+COPY patch/config.rb /opt/gitlab/embedded/cookbooks/gitlab/recipes/config.rb
+COPY patch/show_config.rb /opt/gitlab/embedded/cookbooks/gitlab/recipes/show_config.rb
+
 RUN /assets/setup
 
 # Allow to access embedded tools
@@ -42,3 +46,5 @@ CMD ["/assets/wrapper"]
 
 HEALTHCHECK --interval=60s --timeout=30s --retries=5 \
 CMD /opt/gitlab/bin/gitlab-healthcheck --fail
+
+#docker build -t rizkyario/42-docker-1-ex03 .
