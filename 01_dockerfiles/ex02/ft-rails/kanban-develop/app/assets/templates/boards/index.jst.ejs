@@ -1,0 +1,29 @@
+<header class="boards-index">
+  <h2>My Boards</h2>
+</header>
+
+<ul class="boards-list">
+  <% boards.each(function (board) { %>
+    <li>
+      <a href="/#boards/<%= board.id %>">
+        <%= board.escape('name') %>
+      </a>
+    </li>
+  <% }); %>
+</ul>
+
+<h3>Create New Board</h3>
+
+<div class="create_board">
+  <form class="create_board">
+    <input type="text"
+           class="board_name"
+           name="board[name]"
+           placeholder="Board Name ..." />
+    <input type="text"
+           class="board_description"
+           name="board[description]"
+           placeholder="Board Description ..." />
+    <input type="submit" value="Create Board" />
+  </form>
+</div>

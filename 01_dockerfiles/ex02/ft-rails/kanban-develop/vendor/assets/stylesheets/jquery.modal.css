@@ -1,0 +1,65 @@
+.modal {
+  display: none;
+  background: #fff;
+  -webkit-box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.6);
+  -moz-box-shadow:    5px 5px 5px rgba(50, 50, 50, 0.6);
+  box-shadow:         5px 5px 5px rgba(50, 50, 50, 0.6);
+
+  /* custom */
+  width: 420px;
+  padding: 25px;
+  margin-top: 40px !important;
+  margin-bottom: 25px !important;
+  top: 0 !important;
+  position: absolute !important;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.modal a.close-modal {
+	display: none;
+}
+
+.modal a.close-modal-custom {
+  position: absolute;
+  top: -12.5px;
+  right: -12.5px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  text-indent: -9999px;
+
+  top: 9px;
+  right: 9px;
+  background: url("/assets/close_squared.png") no-repeat 0 0;
+
+  opacity: .75;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  transition: .2s;
+}
+
+.modal a.close-modal-custom:hover {
+  opacity: 1;
+}
+
+.modal-spinner {
+  display: none;
+  width: 64px;
+  height: 64px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-right: -32px;
+  margin-top: -32px;
+  background: url(spinner.gif) #111 no-repeat center center;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+}
