@@ -3,6 +3,7 @@ docker-machine create default
 eval $(docker-machine env default)  
 
 docker-machine ip default
+192.168.99.100
 
 http://guides.rubyonrails.org/getting_started.html
 

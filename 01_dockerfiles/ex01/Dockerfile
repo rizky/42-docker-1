@@ -20,10 +20,10 @@ RUN    tar jxf teamspeak3-server_linux_amd64-$TSV.tar.bz2 && \
        rm teamspeak3-server_linux_amd64-$TSV.tar.bz2
 
 # Load in all of our config files.
-ADD    ./scripts/start /start
+ADD    entrypoint.sh /entrypoint.sh
 
 # Fix all permissions
-RUN    chmod +x /start
+RUN    chmod +x /entrypoint.sh
 
 # /start runs it.
 EXPOSE 9987/udp
@@ -33,7 +33,7 @@ EXPOSE 10011
 RUN    useradd teamspeak && mkdir /data && chown teamspeak:teamspeak /data
 VOLUME ["/data"]
 USER   teamspeak
-CMD    ["/start"]
+ENTRYPOINT [ "/entrypoint.sh" ]
 
 #docker build -t rizkyario/42-docker-1-ex01 .
 #docker run -it --rm -p=9987:9987/udp  -p=10011:10011 -p=30033:30033 rizkyario/42-docker-1-ex01

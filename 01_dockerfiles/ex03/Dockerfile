@@ -1,19 +1,44 @@
 FROM ubuntu:16.04
+MAINTAINER GitLab Inc. <support@gitlab.com>
 
-RUN apt-get update && apt-get install -y \
-    curl \
-    openssh-server \
-    ca-certificates \
-    postfix
+SHELL ["/bin/sh", "-c"],
 
-RUN curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | bash
+# Install required packages
+RUN apt-get update -q \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
+      ca-certificates \
+      openssh-server \
+      wget \
+      apt-transport-https \
+      vim \
+      tzdata \
+      nano \
+    && rm -rf /var/lib/apt/lists/* \
+    && sed 's/session\s*required\s*pam_loginuid.so/session optional pam_loginuid.so/g' -i /etc/pam.d/sshd
 
-ENV EXTERNAL_URL="localhost" 
+# Remove MOTD
+RUN rm -rf /etc/update-motd.d /etc/motd /etc/motd.dynamic
+RUN ln -fs /dev/null /run/motd.dynamic
 
-RUN apt-get update && apt-get install -y \
-    gitlab-ee
+# Copy assets
+COPY RELEASE /
+COPY assets/ /assets/
+RUN /assets/setup
 
+# Allow to access embedded tools
+ENV PATH /opt/gitlab/embedded/bin:/opt/gitlab/bin:/assets:$PATH
+
+# Resolve error: TERM environment variable not set.
+ENV TERM xterm
+
+# Expose web & ssh
 EXPOSE 443 80 22
 
-#docker build -t rizkyario/42-docker-1-ex03 .
-#docker run -it --rm -p 80:80 -p 21:22 rizkyario/42-docker-1-ex03
+# Define data volumes
+VOLUME ["/etc/gitlab", "/var/opt/gitlab", "/var/log/gitlab"]
+
+# Wrapper to handle signal, trigger runit and reconfigure GitLab
+CMD ["/assets/wrapper"]
+
+HEALTHCHECK --interval=60s --timeout=30s --retries=5 \
+CMD /opt/gitlab/bin/gitlab-healthcheck --fail
