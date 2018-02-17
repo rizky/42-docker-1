@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y nodejs --no-install-recommends && rm -r
 RUN apt-get update && apt-get install -y mysql-client postgresql-client sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 ENV RAILS_VERSION 5.0.1
+ENV RAILS_ENV=development
 
 RUN gem install rails --version 4.2.4
 
@@ -15,5 +16,9 @@ WORKDIR /opt/app
 
 RUN bundle install
 
+ENV RACK_ENV=development
+RUN rake db:migrate
+
+RUN rake db:seed
 #docker build -t ft-rails:on-build .
 #docker run -it --rm ft-rails:on-build

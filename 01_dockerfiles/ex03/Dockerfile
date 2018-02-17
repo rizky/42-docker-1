@@ -45,3 +45,6 @@ COPY assets/wrapper /usr/local/bin/
 
 # Wrapper to handle signal, trigger runit and reconfigure GitLab
 CMD ["/usr/local/bin/wrapper"]
+
+#docker build -t rizkyario/42-docker-1-ex03 .
+#docker run -it --rm rizkyario/42-docker-1-ex03
