@@ -1,0 +1,14 @@
+#!/bin/sh
+crontab -l | grep '0 0 \* \* \* /bin/sh /root/init/Scripting/04 2>&1' || 
+crontab -l | { cat; echo '0 0 * * * /bin/sh /root/init/Scripting/04 2>&1';} | crontab -
+
+if [ ! -f /root/crontab_status ]; then
+    md5sum /etc/crontab > /root/crontab_status
+fi
+
+m1=$(cat /root/crontab_status)
+m2=$(md5sum /etc/crontab)
+if [ "$m1" != "$m2" ] ; then
+	echo "/etc/crontab was modified" | mail -s "Crontab Update" root@localhost
+	echo "$m2" > /root/crontab_status
+fi

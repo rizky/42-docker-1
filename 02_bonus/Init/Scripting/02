@@ -1,0 +1,5 @@
+#!/bin/sh
+crontab -l | grep '00 4 \* \* 1 (apt-get update && apt-get -y upgrade) &>> /var/log/update_script.log' || 
+crontab -l | { cat; echo '00 4 * * 1 (apt-get update && apt-get -y upgrade) &>> /var/log/update_script.log';} | crontab -
+
+(apt-get update && apt-get -y upgrade) >> /var/log/update_script.log
