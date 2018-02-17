@@ -7,3 +7,6 @@ docker-machine ip default
 http://guides.rubyonrails.org/getting_started.html
 
 https://github.com/amki/docker-teamspeak-client
+
+/Users/rnugroho/Documents/Codes/42/docker-1/workspace/01_dockerfiles/ex03
+https://gitlab.com/gitlab-org/omnibus-gitlab/issues/3133

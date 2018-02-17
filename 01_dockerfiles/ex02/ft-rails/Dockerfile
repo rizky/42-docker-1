@@ -16,9 +16,7 @@ WORKDIR /opt/app
 
 RUN bundle install
 
-ENV RACK_ENV=development
-RUN rake db:migrate
-
-RUN rake db:seed
+RUN RACK_ENV=development rake db:setup
+RUN RACK_ENV=development rake db:seed
 #docker build -t ft-rails:on-build .
 #docker run -it --rm ft-rails:on-build
