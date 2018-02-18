@@ -13,12 +13,11 @@ https://github.com/amki/docker-teamspeak-client
 https://gitlab.com/gitlab-org/omnibus-gitlab/issues/3133
 
 
-sudo docker run --rm \
+docker run --rm \
     --hostname gitlab.example.com \
     --env GITLAB_OMNIBUS_CONFIG="external_url 'http://my.domain.com/'; gitlab_rails['lfs_enabled'] = true;" \
     --publish 443:443 --publish 80:80 \
     --name gitlab \
-    --volume /srv/gitlab/config:/etc/gitlab \
-    --volume /srv/gitlab/logs:/var/log/gitlab \
-    --volume /srv/gitlab/data:/var/opt/gitlab \
     gitlab/gitlab-ce:latest
+
+https://www.packtpub.com/mapt/book/application_development/9781783986842/2/ch02lvl1sec20/adding-your-ssh-key-to-gitlab

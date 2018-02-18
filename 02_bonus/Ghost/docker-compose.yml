@@ -7,7 +7,7 @@ website:
   ports:
     - '80:2368'
   volumes:
-    - /ghost/blog:/var/lib/ghost
+    - ghost/blog:/var/lib/ghost
 
 
 #docker-compose up
