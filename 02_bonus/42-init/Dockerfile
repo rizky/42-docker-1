@@ -15,15 +15,11 @@ RUN debconf-set-selections preseed.txt
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -q -y postfix
 
 RUN echo "root: root" >> /etc/aliases
-RUN service postfix start
-RUN service ssh start
 
 COPY . /root/init/
 WORKDIR /root/init/
 
-RUN service rsyslog start
-
-CMD ["zsh"]
+CMD [ "zsh" ]
 
 #docker build -t rizkyario/42-docker-1-bonus01 .
-#docker run -it --rm -p 80:80 -p 22:22 --privileged rizkyario/42-docker-1-bonus01
+#docker run -it --rm rizkyario/42-docker-1-bonus01

@@ -21,3 +21,16 @@ docker run --rm \
     gitlab/gitlab-ce:latest
 
 https://www.packtpub.com/mapt/book/application_development/9781783986842/2/ch02lvl1sec20/adding-your-ssh-key-to-gitlab
+
+
+allow X11 access
+xhost +local:docker
+
+docker run -d \
+  --rm \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  -v ${PWD}:/developer/project \
+  -e DISPLAY=unix${DISPLAY} \
+  -p 5000:5000 \
+  --name myproject-vscode \
+  cmiles74/docker-vscode
