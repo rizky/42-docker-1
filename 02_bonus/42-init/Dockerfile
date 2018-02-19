@@ -24,3 +24,6 @@ WORKDIR /root/init/
 RUN service rsyslog start
 
 CMD ["zsh"]
+
+#docker build -t rizkyario/42-docker-1-bonus01 .
+#docker run -it --rm -p 80:80 -p 22:22 --privileged rizkyario/42-docker-1-bonus01

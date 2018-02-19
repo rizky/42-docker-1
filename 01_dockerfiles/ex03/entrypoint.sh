@@ -1,4 +1,4 @@
 /opt/gitlab/embedded/bin/runsvdir-start&
-gitlab-ctl reconfigure
+EXTERNAL_URL="http://gitlab.example.com" && gitlab-ctl reconfigure
 
 tail -f /dev/null
