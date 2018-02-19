@@ -1,0 +1,1 @@
+docker run -d -p 80:80 --name isara-website -v "$PWD":/var/www/html php:7.0-apache

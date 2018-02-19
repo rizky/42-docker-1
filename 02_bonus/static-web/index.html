@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!-->
+<html class="no-js" lang="{{chosenLang}}" ng-app="isaralanding" ng-controller="MainController">
+<!--<![endif]-->
+
+<head>
+
+    <!--- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Isara</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/media-queries.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link type="text/css" rel="stylesheet" href="js/light-gallery/css/lightgallery.min.css" />
+    <link type="text/css" rel="stylesheet" href="js/light-slider/css/lightslider.min.css" />
+
+    <!-- Script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- start Mixpanel -->
+    <script type="text/javascript">
+        (function (e, a) {
+            if (!a.__SV) {
+                var b = window; try { var c, l, i, j = b.location, g = j.hash; c = function (a, b) { return (l = a.match(RegExp(b + "=([^&]*)"))) ? l[1] : null }; g && c(g, "state") && (i = JSON.parse(decodeURIComponent(c(g, "state"))), "mpeditor" === i.action && (b.sessionStorage.setItem("_mpcehash", g), history.replaceState(i.desiredHash || "", e.title, j.pathname + j.search))) } catch (m) { } var k, h; window.mixpanel = a; a._i = []; a.init = function (b, c, f) {
+                    function e(b, a) {
+                        var c = a.split("."); 2 == c.length && (b = b[c[0]], a = c[1]); b[a] = function () {
+                            b.push([a].concat(Array.prototype.slice.call(arguments,
+                                0)))
+                        }
+                    } var d = a; "undefined" !== typeof f ? d = a[f] = [] : f = "mixpanel"; d.people = d.people || []; d.toString = function (b) { var a = "mixpanel"; "mixpanel" !== f && (a += "." + f); b || (a += " (stub)"); return a }; d.people.toString = function () { return d.toString(1) + ".people (stub)" }; k = "disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+                    for (h = 0; h < k.length; h++)e(d, k[h]); a._i.push([b, c, f])
+                }; a.__SV = 1.2; b = e.createElement("script"); b.type = "text/javascript"; b.async = !0; b.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === e.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; c = e.getElementsByTagName("script")[0]; c.parentNode.insertBefore(b, c)
+            }
+        })(document, window.mixpanel || []);
+        mixpanel.init("e644b889f817964a3ab83cc800e8a04e");
+    </script>
+    <!-- end Mixpanel -->
+
+    <!-- start google-analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-70118491-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- end google-analytics -->
+</head>
+
+<body>
+    <!-- Header
+================================================== -->
+    <header>
+        <div class="row cf">
+            <a href="#hero" class="logo">
+            <img class="ani" src="images/logo.png" alt="Logo Isara" />
+        </a>
+
+            <ul class="header-social">
+                <li><a target="_blank" href="https://www.facebook.com/isaratv"><i class="fa fa-facebook"></i></a></li>
+                <li><a target="_blank" href="https://twitter.com/@isaratv"><i class="fa fa-twitter"></i></a></li>
+                <li><a target="_blank" href="http://www.isara.tv/"><i class="fa fa-home"></i></a></li>
+            </ul>
+
+            <div class="lang-op">
+                <a id="lang-handle" href="#">{{chosenLang}}</a>
+                <ul class="ani">
+                    <li><a href ng-click="changeLang('en')">EN</a></li>
+                    <li><a href ng-click="changeLang('fr')">FR</a></li>
+                    <!-- <li><a href ng-click="changeLang('id')">ID</a></li> -->
+                </ul>
+            </div>
+
+            <nav id="nav-wrap">
+
+                <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show Menu</a>
+                <a class="mobile-btn" href="#" title="Hide navigation">Hide Menu</a>
+
+                <ul id="nav" class="nav">
+                    <li><a class="smoothscroll ani" href="#hero">{{lang.beranda}}</a></li>
+                    <li><a class="smoothscroll ani" href="#features">{{lang.fitur}}</a></li>
+                    <!-- <li><a class="smoothscroll ani" href="#subscribe">Subscribe</a></li> -->
+                </ul>
+                <!-- end #nav -->
+
+            </nav>
+            <!-- end #nav-wrap -->
+
+
+        </div>
+
+
+    </header>
+    <!-- Header End -->
+
+
+    <!-- Homepage Hero
+================================================== -->
+    <section id="hero">
+
+        <div class="row">
+
+            <div class="twelve columns">
+
+                <div class="hero-image">
+                    <img src="images/hero.png" alt="" />
+                </div>
+
+                <div class="hero-text">
+                    <h1 class="responsive-headline">Isara</h1>
+                    <p>
+                        {{lang.isara_des}}
+                    </p>
+
+                    <div class="platform-available">
+                        <h2>{{lang.tersedia}}</h2>
+                        <div class="platform-list">
+                            <i class="fa active"><iframe src="ios-form.html" lang="{{chosenLang}}"></iframe></i>
+                            <i class="fa"><iframe src="android-form.html" lang="{{chosenLang}}"></iframe></i>
+                            <span class="arrow ani-fast"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Homepage Hero end -->
+
+    <!-- Features Section
+================================================== -->
+    <section id='features'>
+        <h2 class="title">{{lang.fitur}}</h2>
+
+        <div class="feature-2-wrap">
+            <div class="row feature responsive">
+                <div class="six columns left feature-checkpoint-2">
+                    <h3>{{lang.dict}}</h3>
+                    <p ng-repeat="item in lang.dict_des">{{item}}</p>
+                </div>
+
+                <div class="six columns feature-media right">
+                    <img src="images/iphone-logo.png" alt="" />
+                    <div class="media-demo">
+                        <div class="flexslider-demo">
+                            <video class="screen-video" loop src="http://isara.s3.amazonaws.com/Video%20Screencast/Isara%20Course.mov" poster="images/feature/learning/5.png"></video>
+                            <div class="video-poster">
+                                <img src="images/play-button.png">
+                            </div>
+                            <!--<ul class="slides">
+                            <li><img src="images/feature/learning/1.png" alt="" /></li>
+                            <li><img src="images/feature/learning/2.png" alt="" /></li>
+                            <li><img src="images/feature/learning/3.png" alt="" /></li>
+                            <li><img src="images/feature/learning/4.png" alt="" /></li>
+                            <li><img src="images/feature/learning/5.png" alt="" /></li>
+
+                        </ul>-->
+                        </div>
+                        <!-- div.flexslider ends -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-1-wrap">
+            <div class="row feature design">
+                <div class="six columns right feature-checkpoint-1">
+                    <h3>{{lang.act}}</h3>
+                    <p ng-repeat="item in lang.act_des">{{item}}</p>
+                </div>
+                <div class="six columns feature-media left">
+                    <img src="images/iphone-logo.png" alt="" />
+                    <div class="media-demo">
+                        <div class="flexslider-demo">
+                            <video class="screen-video" loop src="https://isaramobile.blob.core.windows.net/video/Isara%20Interpreter.mp4" poster="images/feature/interpreter/2.png">></video>
+                            <div class="video-poster">
+                                <img src="images/play-button.png">
+                            </div>
+                            <!--<ul class="slides">
+                            <li><img src="images/feature/interpreter/2.png" alt="" /></li>
+                            <li><img src="images/feature/interpreter/1.png" alt="" /></li>
+                        </ul>-->
+                        </div>
+                        <!-- div.flexslider ends -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="feature-2-wrap">
+        <div class="row feature responsive">
+            <div class="six columns left feature-checkpoint-2">
+                <h3>{{lang.media}}</h3>
+                <p ng-repeat="item in lang.media_des">{{item}}</p>
+            </div>
+
+            <div class="six columns feature-media right">
+                <img src="images/iphone-logo.png" alt="" />
+                <div class="media-demo">
+                    <div class="flexslider-demo">
+                        <video class="screen-video" loop src="https://isaramobile.blob.core.windows.net/video/Isara%20Overview.mov" poster="images/feature/media/2.png"></video>
+                        <div class="video-poster">
+                            <img src="images/play-button.png">
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+        <div class="gallery-section row feature responsive">
+            <h3>{{lang.gallery}}</h3>
+            <ul id="imageGallery">
+                <li data-src="images/BannerCPH.jpg" data-sub-html="Isara Poster">
+                    <img src="images/BannerCPH.jpg" style="width: 100%;height: 180px;object-fit: cover;object-position: 0 0;" />
+                </li>
+                <li data-src="https://www.youtube.com/watch?v=xWYebcBJCg8" data-sub-html="Signteraktif Pitch">
+                    <img src="http://img.youtube.com/vi/xWYebcBJCg8/mqdefault.jpg" />
+                    <div class="video-poster">
+                        <img src="images/play-button.png">
+                    </div>
+                </li>
+                <li data-src="https://www.youtube.com/watch?v=IxkBAru3hRM" data-sub-html="Isara Interpreter">
+                    <img src="http://img.youtube.com/vi/IxkBAru3hRM/mqdefault.jpg" />
+                    <div class="video-poster">
+                        <img src="images/play-button.png">
+                    </div>
+                </li>
+                <li data-src="https://www.youtube.com/watch?v=9FvwDsa0aLo" data-sub-html="Isara in 3 Minutes">
+                    <img src="http://img.youtube.com/vi/9FvwDsa0aLo/mqdefault.jpg" />
+                    <div class="video-poster">
+                        <img src="images/play-button.png">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+    <!-- Homepage Hero end -->
+    <!-- Subscribe
+================================================== -->
+    <!-- <section id="subscribe">
+
+   <div class="row section-head">
+
+      <div class="twelve columns">
+
+         <h1>Become a tester.</h1>
+
+         <p>Enter your email and become isara beta tester.</p>
+
+      </div>
+
+   </div>
+
+   <div class="row">
+
+      <div class="twelve columns">
+
+
+         <div id="mc_embed_signup">
+         <form action="//dreambender.us9.list-manage.com/subscribe/post?u=62e0af8aee33356e279a7c578&amp;id=3e6f030f67" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+             <div id="mc_embed_signup_scroll" class="cf form-subs">
+             <input class="ani" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter email to become tester..." required>
+             <div style="position: absolute; left: -5000px;"><input type="text" name="b_62e0af8aee33356e279a7c578_3e6f030f67" tabindex="-1" value=""></div>
+             <input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="button">
+             </div>
+         </form>
+         </div>
+         <p><small>We never share your information or use it to spam you.</small></p>
+
+      </div>
+
+   </div>
+
+ </section>   -->
+
+    <!-- Subscribe Section End-->
+
+
+    <!-- Footer
+================================================== -->
+    <footer>
+
+        <div class="row">
+
+            <div class="six columns info">
+
+                <div class="footer-logo">
+                    <a href="#">
+                    <img src="images/footer-logo.png" alt="" />
+                </a>
+                </div>
+            </div>
+
+            <div class="six columns right-cols">
+
+                <div class="row">
+
+                    <div class="columns">
+                        <h3 class="address">{{lang.alamat}}</h3>
+                        <p>
+                            11 Reu Biscornet<br> Paris
+                            <br> 75012
+                            <br> France
+                        </p>
+                    </div>
+
+                    <div class="columns">
+                        <h3 class="social">{{lang.jejaring_sosial}}</h3>
+                        <ul>
+                            <li><a href="https://www.facebook.com/isaratv">Facebook</a></li>
+                            <li><a href="https://twitter.com/@isaratv">Twitter</a></li>
+                            <!-- <li><a href="http://www.instagram.com/dreambender">Instagram</a></li> -->
+                        </ul>
+                    </div>
+
+                    <div class="columns last">
+                        <h3 class="contact">{{lang.hubungi_kami}}</h3>
+                        <ul>
+                            <li><a href="mailto:info@isara.tv">info@isara.tv</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- Nested Row End -->
+
+            </div>
+
+            <p class="copyright">&copy; 2016 Isara</p>
+
+            <div id="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#hero"><i class="icon-up-open"></i></a>
+            </div>
+
+        </div>
+        <!-- Row End -->
+
+    </footer>
+    <!-- Footer End-->
+
+
+    <!-- Java Script
+================================================== -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
+    </script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/waypoints.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/light-gallery/js/lightgallery.min.js"></script>
+    <script src="js/light-gallery/js/lg-video.min.js"></script>
+    <script src="js/light-gallery/js/lg-thumbnail.min.js"></script>
+    <script src="js/light-slider/js/lightslider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="js/ajs.js"></script>
+
+</body>
+
+</html>
