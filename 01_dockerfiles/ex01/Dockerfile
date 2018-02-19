@@ -31,7 +31,6 @@ EXPOSE 30033
 EXPOSE 10011
 
 RUN    useradd teamspeak && mkdir /data && chown teamspeak:teamspeak /data
-VOLUME ["/data"]
 USER   teamspeak
 ENTRYPOINT [ "/entrypoint.sh" ]
 
