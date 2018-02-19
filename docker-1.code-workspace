@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/rizkyario/Documents/Codes/42/docker-1/submission"
 		}
 	],
 	"settings": {
