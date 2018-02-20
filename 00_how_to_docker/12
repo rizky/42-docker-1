@@ -1,6 +1,8 @@
-docker run -d --rm --restart always \
-    --name spawning-pool \
+docker run -d --restart always \
     -e MYSQL_ROOT_PASSWORD="Kerrigan" \
-    -v hatchery:/var/lib/mysq \
+    -v hatchery:/var/lib/mysql \
     -e MYSQL_DATABASE="zerglings" \
+    --name spawning-pool \
     mysql
+
+#docker run -it --rm -v hatchery:/vol busybox ls -l /vol
