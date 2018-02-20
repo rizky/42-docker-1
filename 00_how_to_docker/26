@@ -2,6 +2,9 @@ docker service create \
     --name engineering-bay \
     --replicas 2 \
     --network overmind \
+	--detach=true \
+	-e OC_USERNAME=user \
+	-e OC_PASSWD=password \
     42school/engineering-bay
 
 # docker service ps engineering-bay

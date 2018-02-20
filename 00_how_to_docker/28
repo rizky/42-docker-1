@@ -2,4 +2,7 @@ docker service create \
     --name marines \
     --replicas 2 \
     --network overmind \
+	--detach=true \
+	-e OC_USERNAME=user \
+	-e OC_PASSWD=password \
     42school/marine-squad
