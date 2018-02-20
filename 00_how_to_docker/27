@@ -1,1 +1,1 @@
-docker service logs 42school/engineering-bay
+docker service logs engineering-bay

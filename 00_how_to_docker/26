@@ -3,3 +3,5 @@ docker service create \
     --replicas 2 \
     --network overmind \
     42school/engineering-bay
+
+# docker service ps engineering-bay
