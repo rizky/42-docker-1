@@ -13,7 +13,7 @@ WORKDIR /opt/app
 ONBUILD ADD app /opt/app
 
 ONBUILD RUN bundle install
-ONBUILD RUN RACK_ENV=development rake db:setup
-ONBUILD RUN RACK_ENV=development rake db:seed
+ONBUILD RUN rake db:setup
+ONBUILD RUN rake db:seed
 #docker build -t ft-rails:on-build .
 #docker run -it --rm ft-rails:on-build
