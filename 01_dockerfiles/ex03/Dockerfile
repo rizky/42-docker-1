@@ -27,4 +27,4 @@ RUN chmod +x /entrypoint.sh
 CMD [ "bash", "/entrypoint.sh" ]
 
 #docker build -t rizkyario/42-docker-1-ex03 .
-#docker run -it --rm -p 80:80 -p 22:22 --privileged rizkyario/42-docker-1-ex03
+#docker run -it --rm -p 80:80 -p 21:22 --privileged rizkyario/42-docker-1-ex03
