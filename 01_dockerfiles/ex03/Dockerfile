@@ -21,7 +21,7 @@ RUN apt update && apt install -y tzdata && \
 
 EXPOSE 22 80
 
-COPY entrypoint.sh /entrypoint.sh
+ADD https://gist.githubusercontent.com/rizkyario/bc236974f3b0c9ce60cdb722bf12a702/raw/634df1395ab9c4187250b81d1c4a38e7e0934779/gitlab-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 CMD [ "bash", "/entrypoint.sh" ]
