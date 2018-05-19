@@ -2,16 +2,17 @@
 
 Introduction to Docker
 
-## Setup using docker-machine:
+## Setup docker-machine:
 export MACHINE_STORAGE_PATH=/tmp  
 docker-machine create default  
 eval $(docker-machine env default)  
 
-docker-machine ip default.   
-192.168.99.100
+## Setup docker-for-mac at 42:
+cd ~ && rm -rf Library/com.docker.docker
+mkdir /goinfre/docker
+ln -s /goinfre/docker Library/com.docker.docker
 
 ## Resources:
-
 - http://guides.rubyonrails.org/getting_started.html
 - https://github.com/amki/docker-teamspeak-client
 - https://gitlab.com/gitlab-org/omnibus-gitlab/issues/3133
