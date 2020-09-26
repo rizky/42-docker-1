@@ -11,9 +11,9 @@ eval $(docker-machine env default)
 
 ## Setup docker-for-mac at 42:
 ```
-cd ~ && rm -rf Library/com.docker.docker
+cd ~ && rm -rf Library/Caches/com.docker.docker
 mkdir /goinfre/docker
-ln -s /goinfre/docker Library/com.docker.docker
+ln -s /goinfre/docker Library/Caches/com.docker.docker
 ```
 
 ## Resources:
